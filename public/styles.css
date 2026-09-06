@@ -101,59 +101,127 @@ a{color:inherit}
 }
 
 /* ---------- Knappar ---------- */
+/* Formspråket kommer ur loggan: avfasade hörn som ekar bokstävernas snedskurna
+   spetsar, den hårda ljusrandan tvärs över krommetallen, och en solid förskjuten
+   skugga i komplementfärgen istället för diffust sken. Hover trycker in knappen
+   mot skuggan som en arkadknapp.
+
+   Skuggan ligger i ett eget pseudo-element. Att bara sätta filter:drop-shadow
+   fungerar inte här – filter appliceras före clip-path, så skuggan klipps bort. */
 .btn{
-  --glow:rgba(255,43,157,.55);
-  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+  --edge:13px;               /* hur mycket hörnen fasas av */
+  --drop:6px;                /* hur långt skuggan förskjuts */
+  --cast:var(--blue);        /* skuggans färg */
+  --face:linear-gradient(180deg,
+    #ff7ac7 0%,
+    #ff3ba5 34%,
+    #ef1f91 71%,
+    #ffffff 73%, #ffffff 75%,   /* kromranden, under texten */
+    #c1006a 77%,
+    #8a004b 100%);
+
+  position:relative;isolation:isolate;
+  display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+  margin:0 var(--drop) var(--drop) 0;   /* plats åt skuggan i flödet */
+  padding:.95em 2.1em;
+  border:0;cursor:pointer;background:none;
   font-family:"Barlow Condensed",sans-serif;
-  font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+  font-weight:700;text-transform:uppercase;letter-spacing:.17em;
   font-size:1.02rem;
-  padding:.85em 1.9em;
-  border:0;border-radius:999px;cursor:pointer;
   color:#fff;text-decoration:none;
-  background:linear-gradient(100deg,var(--magenta-deep),var(--magenta) 45%,var(--blue));
-  box-shadow:0 0 0 1px rgba(255,255,255,.14) inset, 0 8px 30px -8px var(--glow);
-  transition:transform .25s var(--ease), box-shadow .25s var(--ease), filter .25s var(--ease);
+  text-shadow:0 1px 0 rgba(0,0,0,.45);
+  transition:transform .16s var(--ease);
 }
-.btn:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,255,255,.24) inset,0 14px 40px -8px var(--glow);filter:saturate(1.15)}
-.btn:active{transform:translateY(0)}
 
-.btn--ghost{
-  background:transparent;
-  box-shadow:0 0 0 1.5px rgba(87,217,255,.45) inset;
-  color:var(--cyan);
+.btn::before,
+.btn::after{
+  content:"";position:absolute;
+  clip-path:polygon(
+    var(--edge) 0, 100% 0,
+    100% calc(100% - var(--edge)), calc(100% - var(--edge)) 100%,
+    0 100%, 0 var(--edge));
 }
-.btn--ghost:hover{box-shadow:0 0 0 1.5px var(--cyan) inset,0 10px 34px -14px rgba(87,217,255,.7)}
+.btn::before{                 /* knappens yta */
+  inset:0;z-index:-1;
+  background:var(--face);
+}
+.btn::after{                  /* den förskjutna skuggan */
+  inset:var(--drop) calc(var(--drop) * -1) calc(var(--drop) * -1) var(--drop);
+  z-index:-2;
+  background:var(--cast);
+  transition:inset .16s var(--ease);
+}
 
-.btn--sm{padding:.6em 1.3em;font-size:.9rem}
+.btn:hover{transform:translate(3px,3px)}
+.btn:hover::after{inset:calc(var(--drop) - 3px) calc(3px - var(--drop)) calc(3px - var(--drop)) calc(var(--drop) - 3px)}
+.btn:active{transform:translate(var(--drop),var(--drop))}
+.btn:active::after{inset:0}
+.btn:focus-visible{outline:2px solid var(--cyan);outline-offset:5px}
+
+/* Borstad stål – samma form, motsatt temperatur */
+.btn--steel{
+  --cast:var(--magenta);
+  --face:linear-gradient(180deg,
+    #ffffff 0%,
+    #d6e0ee 34%,
+    #b4c2d7 71%,
+    #6d7f9c 73%, #6d7f9c 75%,
+    #f2f6fc 77%,
+    #a8b6cc 100%);
+  color:#0a0a12;
+  text-shadow:0 1px 0 rgba(255,255,255,.5);
+}
+
+.btn--sm{--edge:10px;--drop:5px;padding:.65em 1.4em;font-size:.9rem}
 .btn--wide{width:100%;margin-top:1.4rem}
 
 /* ---------- Fäst boka-knapp ---------- */
 /* Sajten har ingen meny. Knappen glider in när heron scrollats förbi och
    drar sig undan igen när man är framme vid kontaktsektionen. */
 .book{
-  position:fixed;z-index:90;
+  --edge:12px;
+  --drop:6px;
+  position:fixed;z-index:90;isolation:isolate;
   right:clamp(16px,3vw,34px);
   bottom:calc(clamp(16px,3vw,34px) + env(safe-area-inset-bottom,0px));
   display:inline-flex;align-items:center;gap:.65em;
-  padding:.95em 1.7em;border-radius:999px;
+  padding:.95em 1.8em;
   font-family:"Barlow Condensed",sans-serif;font-weight:700;
-  text-transform:uppercase;letter-spacing:.14em;font-size:1.02rem;
+  text-transform:uppercase;letter-spacing:.17em;font-size:1.02rem;
   color:#fff;text-decoration:none;white-space:nowrap;
-  background:linear-gradient(100deg,var(--magenta-deep),var(--magenta) 45%,var(--blue));
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.18) inset,
-    0 12px 38px -10px rgba(255,43,157,.9);
+  text-shadow:0 1px 0 rgba(0,0,0,.45);
   opacity:0;transform:translateY(150%);pointer-events:none;
-  transition:opacity .45s var(--ease),transform .45s var(--ease),box-shadow .3s var(--ease);
+  transition:opacity .45s var(--ease),transform .45s var(--ease);
+}
+.book::before,
+.book::after{
+  content:"";position:absolute;
+  clip-path:polygon(
+    var(--edge) 0, 100% 0,
+    100% calc(100% - var(--edge)), calc(100% - var(--edge)) 100%,
+    0 100%, 0 var(--edge));
+}
+.book::before{
+  inset:0;z-index:-1;
+  background:linear-gradient(180deg,
+    #ff7ac7 0%,
+    #ff3ba5 34%,
+    #ef1f91 71%,
+    #ffffff 73%, #ffffff 75%,
+    #c1006a 77%,
+    #8a004b 100%);
+}
+.book::after{
+  inset:var(--drop) calc(var(--drop) * -1) calc(var(--drop) * -1) var(--drop);
+  z-index:-2;background:var(--blue);
+  transition:inset .16s var(--ease);
 }
 .book.is-visible{opacity:1;transform:none;pointer-events:auto}
-.book:hover{
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.3) inset,
-    0 16px 46px -10px rgba(255,43,157,1);
-  filter:saturate(1.15);
-}
-.book.is-visible:hover{transform:translateY(-3px)}
+.book.is-visible:hover{transform:translate(3px,3px)}
+.book.is-visible:hover::after{inset:calc(var(--drop) - 3px) calc(3px - var(--drop)) calc(3px - var(--drop)) calc(var(--drop) - 3px)}
+.book.is-visible:active{transform:translate(var(--drop),var(--drop))}
+.book.is-visible:active::after{inset:0}
+.book:focus-visible{outline:2px solid var(--cyan);outline-offset:5px}
 .book__bolt{font-size:1.05em;animation:flicker 4.5s ease-in-out infinite}
 @keyframes flicker{
   0%,100%{opacity:1}
@@ -193,8 +261,10 @@ a{color:inherit}
   background-size:100% 42px,42px 100%;
   transform:perspective(300px) rotateX(74deg);
   transform-origin:bottom center;
-  mask-image:linear-gradient(to top,#000 5%,transparent 82%);
-  -webkit-mask-image:linear-gradient(to top,#000 5%,transparent 82%);
+  /* Tonar ut åt båda håll – utan den nedre fadern kapades rutnätet tvärt
+     mot nästa sektion (marquee-remsan dolde tidigare den kanten) */
+  mask-image:linear-gradient(to top,transparent 0,#000 16%,transparent 82%);
+  -webkit-mask-image:linear-gradient(to top,transparent 0,#000 16%,transparent 82%);
   animation:drift 3.6s linear infinite;
   opacity:.75;
 }
@@ -250,20 +320,6 @@ a{color:inherit}
   font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;
   letter-spacing:.16em;font-size:.76rem;color:var(--muted);margin-top:.35rem;
 }
-
-/* ---------- Marquee ---------- */
-.marquee{
-  overflow:hidden;border-block:1px solid var(--line);
-  background:linear-gradient(90deg,rgba(255,43,157,.12),rgba(47,91,255,.12));
-  padding:.75rem 0;
-}
-.marquee__track{display:flex;width:max-content;animation:slide 34s linear infinite}
-.marquee__track span{
-  font-family:"Barlow Condensed",sans-serif;font-weight:700;
-  text-transform:uppercase;letter-spacing:.22em;font-size:.9rem;
-  color:var(--muted);padding-right:2rem;white-space:nowrap;
-}
-@keyframes slide{to{transform:translateX(-50%)}}
 
 /* ---------- Sektioner ---------- */
 .section{padding:clamp(72px,10vw,130px) 0;position:relative}
