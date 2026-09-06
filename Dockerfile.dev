@@ -1,0 +1,14 @@
+# Dev-server med live reload. Används bara lokalt – Netlify bygger ingenting.
+FROM node:22-alpine
+
+RUN npm install -g browser-sync@3
+
+WORKDIR /site
+EXPOSE 8080
+
+CMD ["browser-sync", "start", \
+     "--server", "/site", \
+     "--host", "0.0.0.0", \
+     "--port", "8080", \
+     "--files", "**/*.html,**/*.css,**/*.js", \
+     "--no-ui", "--no-open", "--no-notify"]

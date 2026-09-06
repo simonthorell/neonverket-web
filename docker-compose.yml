@@ -1,0 +1,11 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: neonverket-dev
+    ports:
+      - "8080:8080"
+    volumes:
+      # Bara sajten monteras in – ändringar syns direkt i webbläsaren
+      - ./public:/site:ro

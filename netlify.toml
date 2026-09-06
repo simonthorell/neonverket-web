@@ -1,0 +1,23 @@
+# Ingen build – sajten är ren HTML/CSS/JS och publiceras som den är.
+[build]
+  publish = "public"
+
+# Säkerhetsheaders för allt
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), camera=(), microphone=()"
+
+# Loggan och bilderna ändras aldrig utan nytt filnamn – cacha hårt
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# HTML ska alltid hämtas färsk så nya texter slår igenom direkt
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
