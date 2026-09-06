@@ -1,6 +1,6 @@
 # neonverket-web
 
-Sajten för Neonverket – 80-talsrock från Norrtälje.
+Sajten för Neonverket – coverbandet som spelar 80-talsrock i hela Sverige.
 
 Ren HTML/CSS/JS. Ingen build, inga beroenden, inget ramverk.
 En sida utan meny – navigeringen är en fäst boka-knapp som glider in
