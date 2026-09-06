@@ -62,7 +62,7 @@ npx netlify-cli deploy --prod
 
 ## Innan den går live
 
-- [ ] Byt `boka@neonverket.se` och telefonnumret i `public/index.html` (sök på `TODO Simon`)
+- [ ] Byt `boka@neonverket.com` och telefonnumret i `public/index.html` (sök på `TODO Simon`)
 - [ ] Siffrorna i heron (40+ låtar, 2×45 min) är gissningar – justera dem
 - [ ] Ev. bandmedlemmar och en bild från ett gig
 
