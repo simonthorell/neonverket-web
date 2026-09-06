@@ -3,13 +3,15 @@
 Sajten för Neonverket – 80-talsrock från Norrtälje.
 
 Ren HTML/CSS/JS. Ingen build, inga beroenden, inget ramverk.
+En sida utan meny – navigeringen är en fäst boka-knapp som glider in
+när heron scrollats förbi.
 Allt som publiceras ligger i `public/`.
 
 ```
 public/          ← det som hamnar på Netlify
   index.html     ← hela sajten, all text ligger här
   styles.css     ← neonpaletten och layouten
-  script.js      ← nav, scroll-in-effekter, FAQ
+  script.js      ← fäst boka-knapp, scroll-in-effekter, FAQ
   assets/        ← logga (webp + png), OG-bild, favicon
 docker-compose.yml
 Dockerfile.dev   ← dev-server med live reload
@@ -61,8 +63,7 @@ npx netlify-cli deploy --prod
 ## Innan den går live
 
 - [ ] Byt `boka@neonverket.se` och telefonnumret i `public/index.html` (sök på `TODO Simon`)
-- [ ] Döp om Spotify-spellistan till Neonverket – spelaren visar annars "Bilelectric Boyz"
-- [ ] Siffrorna under "Neonverket i siffror" är påhittade, justera dem
+- [ ] Siffrorna i heron (40+ låtar, 2×45 min) är gissningar – justera dem
 - [ ] Ev. bandmedlemmar och en bild från ett gig
 
 ## Loggan

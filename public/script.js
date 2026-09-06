@@ -4,34 +4,33 @@
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- Nav: bakgrund när man scrollat, hamburgare på mobil ---- */
-  var nav = document.getElementById('nav');
-  var links = document.getElementById('navLinks');
-  var toggle = document.getElementById('navToggle');
+  /* ---- Fäst boka-knapp ----
+     Sajten har ingen meny. Knappen visas när heron är förbi och göms igen
+     när kontaktsektionen syns – där finns ju redan mejl och telefon. */
+  var book = document.getElementById('book');
+  var hero = document.getElementById('top');
+  var contact = document.getElementById('kontakt');
 
-  function onScroll() {
-    nav.classList.toggle('is-stuck', window.scrollY > 24);
+  if (book && hero && contact && 'IntersectionObserver' in window) {
+    var pastHero = false;
+    var atContact = false;
+
+    function sync() {
+      book.classList.toggle('is-visible', pastHero && !atContact);
+    }
+
+    new IntersectionObserver(function (entries) {
+      pastHero = !entries[0].isIntersecting;
+      sync();
+    }, { threshold: 0 }).observe(hero);
+
+    new IntersectionObserver(function (entries) {
+      atContact = entries[0].isIntersecting;
+      sync();
+    }, { threshold: 0.15 }).observe(contact);
+  } else if (book) {
+    book.classList.add('is-visible');
   }
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  function closeMenu() {
-    links.classList.remove('is-open');
-    toggle.setAttribute('aria-expanded', 'false');
-  }
-
-  toggle.addEventListener('click', function () {
-    var open = links.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', String(open));
-  });
-
-  links.addEventListener('click', function (e) {
-    if (e.target.closest('a')) closeMenu();
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeMenu();
-  });
 
   /* ---- Innehåll som tonar in när det scrollas fram ---- */
   var targets = document.querySelectorAll('[data-reveal]');

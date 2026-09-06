@@ -26,26 +26,6 @@
 
 <a class="skip" href="#main">Hoppa till innehåll</a>
 
-<!-- ============ NAV ============ -->
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <a class="nav__brand" href="#top" aria-label="Neonverket – till toppen">
-      <img src="assets/logo-sm.webp" alt="Neonverket" width="160" height="80">
-    </a>
-    <nav class="nav__links" id="navLinks">
-      <a href="#bandet">Bandet</a>
-      <a href="#ljudet">Ljudet</a>
-      <a href="#kvallen">Kvällen</a>
-      <a href="#boka">Boka</a>
-      <a href="#fragor">Frågor</a>
-      <a class="btn btn--sm" href="#kontakt">Boka oss</a>
-    </nav>
-    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Meny">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
 <main id="main">
 
 <!-- ============ HERO ============ -->
@@ -69,7 +49,7 @@
 
     <div class="hero__cta">
       <a class="btn" href="#kontakt">Boka bandet</a>
-      <a class="btn btn--ghost" href="#ljudet">Vad spelar ni?</a>
+      <a class="btn btn--ghost" href="#kvallen">Så går en kväll till</a>
     </div>
 
     <ul class="hero__stats">
@@ -92,7 +72,7 @@
 <section class="section" id="bandet">
   <div class="wrap">
     <p class="eyebrow" data-reveal>Vad ni får</p>
-    <h2 class="h2 chrome" data-reveal>Ett coverband utan ambitioner<br>att bli upptäckta</h2>
+    <h2 class="h2" data-reveal><span class="chrome">Ett coverband utan ambitioner</span><br><span class="chrome">att bli upptäckta</span></h2>
     <p class="section__lead" data-reveal>
       Neonverket är ett gäng vuxna människor från Norrtälje som kommit fram till att livet är
       för kort för att spela något annat än 80-talsrock. Vi spelar för att det är kul —
@@ -124,94 +104,11 @@
   </div>
 </section>
 
-<!-- ============ LJUDET / STILAR ============ -->
-<section class="section section--alt" id="ljudet">
-  <div class="wrap">
-    <p class="eyebrow" data-reveal>Ljudet</p>
-    <h2 class="h2 chrome" data-reveal>Stilarna vi lever på</h2>
-    <p class="section__lead" data-reveal>
-      Vi håller oss till 80-talet och grannåren. Ni behöver inte välja låtar — säg vilken
-      stämning ni är ute efter så bygger vi kvällen åt er.
-    </p>
-
-    <div class="styles">
-      <article class="style" data-reveal>
-        <span class="style__icon" aria-hidden="true">⚡</span>
-        <h3>Arenarock</h3>
-        <p>Refränger som var byggda för läktare och nu ska rymmas i en bygdegård. Fungerar förvånansvärt bra.</p>
-      </article>
-      <article class="style" data-reveal>
-        <span class="style__icon" aria-hidden="true">🎸</span>
-        <h3>Hårdrock med hårspray</h3>
-        <p>Riff, dubbla gitarrer och solon som tar precis åtta takter för länge. Precis så långa som de ska vara.</p>
-      </article>
-      <article class="style" data-reveal>
-        <span class="style__icon" aria-hidden="true">📻</span>
-        <h3>AOR &amp; bilstereo</h3>
-        <p>Den blanka, välproducerade rocken som låter bäst genom en vevad bilruta på väg mot Kapellskär.</p>
-      </article>
-      <article class="style" data-reveal>
-        <span class="style__icon" aria-hidden="true">🔥</span>
-        <h3>Powerballader</h3>
-        <p>Momentet där dansgolvet plötsligt blir parvis och någon hittar tillbaka till sin gamla klasskompis.</p>
-      </article>
-      <article class="style" data-reveal>
-        <span class="style__icon" aria-hidden="true">🇸🇪</span>
-        <h3>Svenskt på hemmaplan</h3>
-        <p>80-talet var ovanligt generöst mot Sverige. Vi utnyttjar det varje gång publiken börjar sjunga med i förväg.</p>
-      </article>
-      <article class="style style--wild" data-reveal>
-        <span class="style__icon" aria-hidden="true">🎁</span>
-        <h3>Er önskelåt</h3>
-        <p>Är den från 80-talet och har ett gitarrsolo är svaret nästan alltid ja. Fråga tre veckor innan så sitter den.</p>
-      </article>
-    </div>
-
-    <div class="wall" data-reveal>
-      <h3 class="h3">Ungefär i den här familjen</h3>
-      <ul class="wall__list">
-        <li>Def Leppard</li><li>Van Halen</li><li>Whitesnake</li><li>TOTO</li>
-        <li>Thin Lizzy</li><li>Bon Jovi</li><li>Judas Priest</li><li>Europe</li>
-        <li>Bryan Adams</li><li>ZZ Top</li><li>Journey</li><li>Deep Purple</li>
-        <li>KISS</li><li>Rainbow</li><li>Boston</li><li>Queen</li>
-        <li>Gary Moore</li><li>Ozzy</li><li>Saxon</li><li>Roxette</li>
-        <li class="wall__more">…och en hel del till</li>
-      </ul>
-      <!-- TODO Simon: döp om spellistan på Spotify till Neonverket – spelaren visar
-           annars det gamla bandnamnet mitt på sidan. -->
-      <details class="peek">
-        <summary>Hela listan, för den som ändå tänker fråga</summary>
-        <iframe
-          title="Neonverket – repertoar på Spotify"
-          style="border-radius:14px;margin-top:1.1rem"
-          src="https://open.spotify.com/embed/playlist/6inob8jNg0m7ObO4UTWmQ4?utm_source=generator&theme=0"
-          width="100%" height="352" frameborder="0" loading="lazy"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SIFFROR ============ -->
-<section class="numbers">
-  <div class="wrap">
-    <p class="eyebrow" data-reveal>Neonverket i siffror</p>
-    <div class="numbers__grid">
-      <div class="stat" data-reveal><strong>0</strong><span>egna låtar</span></div>
-      <div class="stat" data-reveal><strong>1</strong><span>rökmaskin, sparsamt använd</span></div>
-      <div class="stat" data-reveal><strong>3</strong><span>gitarrer per gig, varav en i reserv</span></div>
-      <div class="stat" data-reveal><strong>112</strong><span>meter kabel i bussen</span></div>
-      <div class="stat" data-reveal><strong>4</strong><span>medlemmar som anser sig vara bandledare</span></div>
-      <div class="stat" data-reveal><strong>∞</strong><span>diskussioner om bandnamnet</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ KVÄLLEN ============ -->
-<section class="section" id="kvallen">
+<section class="section section--alt" id="kvallen">
   <div class="wrap">
     <p class="eyebrow" data-reveal>Så går en kväll till</p>
-    <h2 class="h2 chrome" data-reveal>Från lastbrygga<br>till extranummer</h2>
+    <h2 class="h2" data-reveal><span class="chrome">Från lastbrygga</span><br><span class="chrome">till extranummer</span></h2>
     <p class="section__lead" data-reveal>
       Ni behöver inte hålla i något. Det här händer ändå, ungefär i den här ordningen.
     </p>
@@ -230,10 +127,10 @@
 </section>
 
 <!-- ============ BOKA ============ -->
-<section class="section section--alt" id="boka">
+<section class="section" id="boka">
   <div class="wrap">
     <p class="eyebrow" data-reveal>Boka</p>
-    <h2 class="h2 chrome" data-reveal>Tre sätt att få oss dit</h2>
+    <h2 class="h2" data-reveal><span class="chrome">Tre sätt att få oss dit</span></h2>
 
     <div class="packs">
       <article class="pack" data-reveal>
@@ -286,10 +183,10 @@
 </section>
 
 <!-- ============ FRÅGOR ============ -->
-<section class="section" id="fragor">
+<section class="section section--alt" id="fragor">
   <div class="wrap wrap--narrow">
     <p class="eyebrow" data-reveal>Vanliga frågor</p>
-    <h2 class="h2 chrome" data-reveal>Det ni ändå tänker fråga</h2>
+    <h2 class="h2" data-reveal><span class="chrome">Det ni ändå tänker fråga</span></h2>
 
     <div class="faq" data-reveal>
       <details>
@@ -333,7 +230,7 @@
   <div class="hero__grid hero__grid--soft" aria-hidden="true"></div>
   <div class="wrap wrap--narrow">
     <p class="eyebrow" data-reveal>Kontakt</p>
-    <h2 class="h2 chrome" data-reveal>Har ni ett datum?</h2>
+    <h2 class="h2" data-reveal><span class="chrome">Har ni ett datum?</span></h2>
     <p class="section__lead" data-reveal>
       Skicka datum, plats och ungefär hur många ni blir. Vi svarar oftast samma kväll,
       om det inte är repdags.
@@ -364,6 +261,13 @@
     <p class="footer__fine">Ingen neon skadades under produktionen av den här sajten.</p>
   </div>
 </footer>
+
+
+<!-- ============ FÄST BOKA-KNAPP ============ -->
+<a class="book" id="book" href="#kontakt">
+  <span class="book__bolt" aria-hidden="true">⚡</span>
+  <span>Boka oss</span>
+</a>
 
 <script src="script.js"></script>
 </body>
