@@ -491,7 +491,7 @@ a{color:inherit}
 .faq p{margin:0 0 1.3rem;color:var(--muted);max-width:60ch}
 
 /* ---------- Kontakt ---------- */
-.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-bottom:1.8rem}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-bottom:1.8rem;max-width:420px}
 .contact__card{
   text-decoration:none;
   border:1px solid var(--line);border-radius:var(--r);

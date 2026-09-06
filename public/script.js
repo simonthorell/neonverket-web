@@ -6,7 +6,7 @@
 
   /* ---- Fäst boka-knapp ----
      Sajten har ingen meny. Knappen visas när heron är förbi och göms igen
-     när kontaktsektionen syns – där finns ju redan mejl och telefon. */
+     när kontaktsektionen syns – där finns ju redan mejladressen. */
   var book = document.getElementById('book');
   var hero = document.getElementById('top');
   var contact = document.getElementById('kontakt');
